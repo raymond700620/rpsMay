@@ -1,7 +1,7 @@
 package com.xp.rps;
 
 public interface RpsRepository {
-    public int create(Game g);
+    public int createGame(Game g);
 
-    Game get(int gameId);
+    Game getGame(int gameId);
 }

@@ -16,8 +16,8 @@ public class RpsRepositoryTest {
     @Test
     void createGame() {
         Game g = new Game("Raymond","Rae",3);
-        int gameId = repo.create(g);
-        g = repo.get(gameId);
+        int gameId = repo.createGame(g);
+        g = repo.getGame(gameId);
         assertEquals("Raymond", g.getPlayer1());
     }
 }

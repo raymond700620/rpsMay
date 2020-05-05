@@ -21,7 +21,8 @@ class RpsApplicationTests {
 	}
 
 	@Test
-	void createGame() {
+	void oneGame() {
+		//1. create a game
 		ResponseEntity<Integer> response = restTemplate.postForEntity("/game", new Game("Raymond","Rae",3), Integer.class);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		int id = response.getBody();
@@ -30,6 +31,9 @@ class RpsApplicationTests {
 
 		ResponseEntity<Game> result = restTemplate.getForEntity("/game/"+id, Game.class);
 		assertEquals("Raymond", result.getBody().getPlayer1());
+
+		//2. play a game
+
 	}
 
 

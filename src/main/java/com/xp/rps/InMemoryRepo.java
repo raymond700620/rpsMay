@@ -6,20 +6,20 @@ import java.util.HashMap;
 
 @Repository
 public class InMemoryRepo implements RpsRepository {
-    HashMap<Integer, Game> repo = new HashMap<>();
+    HashMap<Integer, Game> gameRepo = new HashMap<>();
     int sequence = 0;
 
     @Override
-    public int create(Game g) {
+    public int createGame(Game g) {
         int id = ++sequence;
         g.setId(id);
-        repo.put(id, g);
+        gameRepo.put(id, g);
         return id;
     }
 
     @Override
-    public Game get(int gameId) {
-        return repo.get(gameId);
+    public Game getGame(int gameId) {
+        return gameRepo.get(gameId);
     }
 
 
