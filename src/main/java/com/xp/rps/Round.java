@@ -1,11 +1,17 @@
 package com.xp.rps;
 
+import com.xp.rps.rule.Result;
 import com.xp.rps.rule.Throw;
 
-public class RoundResult {
+public class Round {
     Throw throw1;
     Throw throw2;
-    String result;
+    Result result;
+
+    public Round(Throw throw1, Throw throw2) {
+        this.throw1 = throw1;
+        this.throw2 = throw2;
+    }
 
     public Throw getThrow1() {
         return throw1;
@@ -23,11 +29,11 @@ public class RoundResult {
         this.throw2 = throw2;
     }
 
-    public String getResult() {
+    public Result getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 }

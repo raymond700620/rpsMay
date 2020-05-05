@@ -1,5 +1,7 @@
 package com.xp.rps;
 
+import com.xp.rps.rule.Result;
+import com.xp.rps.rule.Throw;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +23,7 @@ class RpsApplicationTests {
 	}
 
 	@Test
-	void oneGame() {
+	void OneGame() {
 		//1. create a game
 		ResponseEntity<Integer> response = restTemplate.postForEntity("/game", new Game("Raymond","Rae",3), Integer.class);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -32,9 +34,27 @@ class RpsApplicationTests {
 		ResponseEntity<Game> result = restTemplate.getForEntity("/game/"+id, Game.class);
 		assertEquals("Raymond", result.getBody().getPlayer1());
 
-		//2. play a game
+		//2. play Round
+		ResponseEntity<Round> response2 = restTemplate.postForEntity("/play/"+id, new Round(Throw.ROCK, Throw.PAPER), Round.class);
+		assertEquals(Result.P2_WINS, response2.getBody().getResult());
+
+		ResponseEntity<Round> response3 = restTemplate.postForEntity("/play/"+id, new Round(Throw.ROCK, Throw.SCISSORS), Round.class);
+		assertEquals(Result.P1_WINS, response3.getBody().getResult());
+
+		ResponseEntity<Round> response4 = restTemplate.postForEntity("/play/"+id, new Round(Throw.ROCK, Throw.PAPER), Round.class);
+		assertEquals(Result.P2_WINS, response4.getBody().getResult());
+
+
+		//3. getGameResult
+		ResponseEntity<GameResult> response10 = restTemplate.getForEntity("/gameresult/"+id, GameResult.class);
+		assertEquals(3, response10.getBody().getRoundList().size());
+		assertEquals(Result.P2_WINS, response10.getBody().getRoundList().get(0).getResult());
+
 
 	}
+
+
+
 
 
 }
