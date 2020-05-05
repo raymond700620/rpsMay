@@ -43,9 +43,6 @@ public class RpsController {
 
     @GetMapping("/gameresult/{id}")
     GameResult getGameResult(@PathVariable int id) {
-//        Game game = new Game("1","2",3);
-//        GameResult result = new GameResult(game);
-//        result.setResult(Result.P2_WINS);
 
         return repo.getGameResult(id);
     }

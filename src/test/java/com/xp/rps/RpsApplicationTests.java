@@ -49,7 +49,7 @@ class RpsApplicationTests {
 		ResponseEntity<GameResult> response10 = restTemplate.getForEntity("/gameresult/"+id, GameResult.class);
 		assertEquals(3, response10.getBody().getRoundList().size());
 		assertEquals(Result.P2_WINS, response10.getBody().getRoundList().get(0).getResult());
-
+		assertEquals(Result.P2_WINS, response10.getBody().getResult());
 
 	}
 

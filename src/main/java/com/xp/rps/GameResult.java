@@ -8,7 +8,6 @@ import java.util.List;
 public class GameResult {
     Game game;
     List<Round> roundList = new ArrayList();
-    Result result;
 
     public GameResult() {
     }
@@ -37,11 +36,23 @@ public class GameResult {
         this.game = game;
     }
 
+    //Calculate on the fly
     public Result getResult() {
+        int p1=0;
+        int p2=0;
+        Result result;
+        for(Round round: roundList) {
+            if (Result.P1_WINS.equals(round.getResult())) {
+                p1++;
+            }
+            else if (Result.P2_WINS.equals(round.getResult())) {
+                p2++;
+            }
+        }
+        if (p1>p2) result=Result.P1_WINS;
+        else if (p2>p1) result=Result.P2_WINS;
+        else result = Result.DRAW;
         return result;
     }
 
-    public void setResult(Result result) {
-        this.result = result;
-    }
 }
