@@ -3,6 +3,7 @@ package com.xp.rps;
 import com.xp.rps.rule.Result;
 import com.xp.rps.rule.Throw;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JDBCRepoTest {
 
 
-    static JdbcRepo repo;
+    JdbcRepo repo;
 
-    @BeforeAll
-    static void setup() {
+    @BeforeEach
+    void setup() {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
 
         dataSource.setURL("jdbc:postgresql://arjuna.db.elephantsql.com:5432/ffptppgf?user=ffptppgf&password=R9TY-k4fr6oMdEOGnS-kBqkVHb1gzY4q");
