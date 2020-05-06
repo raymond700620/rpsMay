@@ -14,6 +14,11 @@ public class RpsController {
         this.repo = repo;
     }
 
+    @GetMapping("/")
+    String hello() {
+        return "Hello";
+    }
+
     @PostMapping("/game")
     int create(@RequestBody Game game) {
         int id = repo.createGame(game);
