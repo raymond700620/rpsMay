@@ -14,6 +14,8 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.postgresql:postgresql'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
@@ -22,3 +24,7 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+test.environment([
+		"SPRING_DATASOURCE_URL": "jdbc:postgresql://arjuna.db.elephantsql.com:5432/ffptppgf?user=ffptppgf&password=R9TY-k4fr6oMdEOGnS-kBqkVHb1gzY4q",
+])

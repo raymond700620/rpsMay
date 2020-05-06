@@ -8,6 +8,15 @@ public class Round {
     Throw throw2;
     Result result;
 
+    public Round() {
+    }
+
+    public Round(Throw throw1, Throw throw2, Result result) {
+        this.throw1 = throw1;
+        this.throw2 = throw2;
+        this.result = result;
+    }
+
     public Round(Throw throw1, Throw throw2) {
         this.throw1 = throw1;
         this.throw2 = throw2;

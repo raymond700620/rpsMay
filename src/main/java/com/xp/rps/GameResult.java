@@ -55,4 +55,11 @@ public class GameResult {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "GameResult{" +
+                "game=" + game +
+                ", roundList=" + roundList +
+                '}';
+    }
 }

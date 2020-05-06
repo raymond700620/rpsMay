@@ -6,6 +6,16 @@ public class Game {
     String player2;
     int round;
 
+    public Game() {
+    }
+
+    public Game(int id, String player1, String player2, int round) {
+        this.id = id;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.round = round;
+    }
+
     public Game(String player1, String player2, int round) {
         this.player1 = player1;
         this.player2 = player2;
@@ -42,5 +52,15 @@ public class Game {
 
     public void setRound(int round) {
         this.round = round;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", player1='" + player1 + '\'' +
+                ", player2='" + player2 + '\'' +
+                ", round=" + round +
+                '}';
     }
 }
