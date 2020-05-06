@@ -7,13 +7,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.List;
 
-public class JdbcRepo {
+@Repository
+public class JdbcRepo implements RpsRepository{
     JdbcTemplate jdbcTemplate;
 
     private final String SQL_GET_GAME = "SELECT * FROM GAME WHERE ID=?";
@@ -27,6 +30,7 @@ public class JdbcRepo {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
     public int createGame(Game g) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -44,7 +48,7 @@ public class JdbcRepo {
 
     }
 
-
+    @Override
     public Game getGame(int gameId) {
         Game game =  jdbcTemplate.queryForObject(SQL_GET_GAME, new Object[]{gameId}, (rs, rowNum) ->
                 new Game(
@@ -56,7 +60,7 @@ public class JdbcRepo {
         return game;
     }
 
-
+    @Override
     public int saveGameResult(GameResult gr) {
         //insert all the rounds only
         for (int i=0; i<gr.getRoundList().size(); i++) {
@@ -74,7 +78,7 @@ public class JdbcRepo {
         return gr.getGame().getId();
     }
 
-
+    @Override
     public GameResult getGameResult(int id) {
         Game game = this.getGame(id);
 
