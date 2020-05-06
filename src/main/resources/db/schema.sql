@@ -20,3 +20,7 @@ CREATE TABLE ROUND (
 )
 
 #INSERT INTO ROUND (GAME_ID, THROW1, THROW2, RESULT) VALUES (1, 'PAPER','ROCK','P1_WINS')
+
+#1. Test DB and Dev DB suppose seperate
+#2. Test Result suppose remove
+#3. URL suppose to be done in property or bootRun
