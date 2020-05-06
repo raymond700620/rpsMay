@@ -4,7 +4,9 @@ import com.xp.rps.rule.Result;
 import com.xp.rps.rule.Throw;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.postgresql.ds.PGConnectionPoolDataSource;
 import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,6 +33,7 @@ public class JDBCRepoTest {
 
 
     @Test
+    @Disabled
     void getGame() {
         Game g = new Game("p1","p2",3);
         int id = repo.createGame(g);
