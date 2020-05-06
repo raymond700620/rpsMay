@@ -25,7 +25,7 @@ public class JDBCRepoTest {
     @BeforeEach
     void setup() {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        new PGConnectionPoolDataSource()
+        //new PGConnectionPoolDataSource()
 
         dataSource.setURL("jdbc:postgresql://arjuna.db.elephantsql.com:5432/ffptppgf?user=ffptppgf&password=R9TY-k4fr6oMdEOGnS-kBqkVHb1gzY4q");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
