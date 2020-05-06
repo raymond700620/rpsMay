@@ -2,7 +2,7 @@ name: RPS Pipeline
 
 on:
   push:
-    branches: [CICD_GitAction]
+    branches: [master]
 
 jobs:
   build-and-publish:
