@@ -34,6 +34,7 @@ public class RpsController {
     Round play(@PathVariable int id, @RequestBody Round round) {
         round.setResult(RPS.play(round.throw1, round.throw2));
 
+        //TODO: change to only insert the comming new Round
         //Store in GameResult
         GameResult gr = repo.getGameResult(id);
         if (gr==null) {

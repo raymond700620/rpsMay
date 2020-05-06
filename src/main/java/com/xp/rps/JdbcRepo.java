@@ -61,11 +61,14 @@ public class JdbcRepo {
         //insert all the rounds only
         for (int i=0; i<gr.getRoundList().size(); i++) {
             Round r = gr.getRoundList().get(i);
-            jdbcTemplate.update(SQL_CREATE_ROUND,
-                    gr.getGame().getId(),
-                    r.getThrow1().toString(),
-                    r.getThrow2().toString(),
-                    r.getResult().toString());
+            //Only insert the Round without ID ==> new Round object
+            if (r.getRoundId()==0) {
+                jdbcTemplate.update(SQL_CREATE_ROUND,
+                        gr.getGame().getId(),
+                        r.getThrow1().toString(),
+                        r.getThrow2().toString(),
+                        r.getResult().toString());
+            }
         }
 
         return gr.getGame().getId();
@@ -89,6 +92,7 @@ public class JdbcRepo {
     }
 
     private final RowMapper<Round> mapper = (rs, rowNum) -> new Round(
+            rs.getInt("ID"),
             Throw.valueOf(rs.getString("THROW1")),
             Throw.valueOf(rs.getString("THROW2")),
             Result.valueOf(rs.getString("RESULT"))

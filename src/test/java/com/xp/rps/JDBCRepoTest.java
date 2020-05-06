@@ -50,6 +50,21 @@ public class JDBCRepoTest {
         GameResult result = repo.getGameResult(gameId);
         assertEquals(3, result.getRoundList().size());
         System.out.println("====>"+result);
+
+        //test saveGameResult by adding new Round
+        r = new Round(Throw.PAPER, Throw.ROCK, Result.P1_WINS);
+        result.addRound(r);
+        r = new Round(Throw.SCISSORS, Throw.ROCK, Result.P2_WINS);
+        result.addRound(r);
+
+        repo.saveGameResult(result);
+
+        result = repo.getGameResult(gameId);
+        assertEquals(5, result.getRoundList().size());
+
+       // System.out.println("======>"+gameResult.getRoundList().size());
+
+
     }
 
 
