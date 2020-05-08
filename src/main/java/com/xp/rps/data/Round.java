@@ -1,4 +1,4 @@
-package com.xp.rps;
+package com.xp.rps.data;
 
 import com.xp.rps.rule.Result;
 import com.xp.rps.rule.Throw;

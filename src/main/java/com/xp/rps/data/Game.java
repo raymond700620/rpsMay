@@ -1,4 +1,4 @@
-package com.xp.rps;
+package com.xp.rps.data;
 
 public class Game {
     int id;

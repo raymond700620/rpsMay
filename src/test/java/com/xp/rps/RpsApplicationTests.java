@@ -1,5 +1,8 @@
 package com.xp.rps;
 
+import com.xp.rps.data.Game;
+import com.xp.rps.data.GameResult;
+import com.xp.rps.data.Round;
 import com.xp.rps.rule.Result;
 import com.xp.rps.rule.Throw;
 import org.junit.jupiter.api.Test;

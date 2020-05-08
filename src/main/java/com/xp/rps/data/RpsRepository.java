@@ -1,4 +1,7 @@
-package com.xp.rps;
+package com.xp.rps.data;
+
+import com.xp.rps.data.Game;
+import com.xp.rps.data.GameResult;
 
 public interface RpsRepository {
     public int createGame(Game g);

@@ -1,5 +1,9 @@
-package com.xp.rps;
+package com.xp.rps.data;
 
+import com.xp.rps.data.Game;
+import com.xp.rps.data.GameResult;
+import com.xp.rps.data.Round;
+import com.xp.rps.data.RpsRepository;
 import com.xp.rps.rule.Result;
 import com.xp.rps.rule.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +15,11 @@ import org.springframework.stereotype.Repository;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
-import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.List;
 
 @Repository
-public class JdbcRepo implements RpsRepository{
+public class JdbcRepo implements RpsRepository {
     JdbcTemplate jdbcTemplate;
 
     private final String SQL_GET_GAME = "SELECT * FROM GAME WHERE ID=?";
@@ -50,7 +53,8 @@ public class JdbcRepo implements RpsRepository{
 
     @Override
     public Game getGame(int gameId) {
-        Game game =  jdbcTemplate.queryForObject(SQL_GET_GAME, new Object[]{gameId}, (rs, rowNum) ->
+        Game game =  jdbcTemplate.queryForObject(SQL_GET_GAME, new Object[]{gameId},
+                (rs, rowNum) ->
                 new Game(
                         rs.getInt("ID"),
                         rs.getString("PLAYER1"),

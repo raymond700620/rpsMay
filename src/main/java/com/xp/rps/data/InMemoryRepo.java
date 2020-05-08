@@ -1,6 +1,8 @@
-package com.xp.rps;
+package com.xp.rps.data;
 
-import org.springframework.stereotype.Repository;
+import com.xp.rps.data.Game;
+import com.xp.rps.data.GameResult;
+import com.xp.rps.data.RpsRepository;
 
 import java.util.HashMap;
 

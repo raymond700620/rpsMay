@@ -21,6 +21,9 @@ CREATE TABLE ROUND (
 
 #INSERT INTO ROUND (GAME_ID, THROW1, THROW2, RESULT) VALUES (1, 'PAPER','ROCK','P1_WINS')
 
+#Create a DB
+
 #1. Test DB and Dev DB suppose seperate
 #2. Test Result suppose remove
 #3. URL suppose to be done in property or bootRun
+#4. due to some reason, the Elephone DB connection issue from GitAction so disabled, but @SpringbootTest is successful

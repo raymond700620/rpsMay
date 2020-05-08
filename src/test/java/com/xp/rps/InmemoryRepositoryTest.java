@@ -1,5 +1,8 @@
 package com.xp.rps;
 
+import com.xp.rps.data.Game;
+import com.xp.rps.data.InMemoryRepo;
+import com.xp.rps.data.RpsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

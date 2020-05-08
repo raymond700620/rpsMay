@@ -1,26 +1,20 @@
 package com.xp.rps;
 
+import com.xp.rps.data.*;
 import com.xp.rps.rule.Result;
 import com.xp.rps.rule.Throw;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.postgresql.ds.PGConnectionPoolDataSource;
 import org.postgresql.ds.PGSimpleDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.sql.DataSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+//UNIT Test
 public class JDBCRepoTest {
 
-
-    JdbcRepo repo;
+    RpsRepository repo;
 
     @BeforeEach
     void setup() {
@@ -34,7 +28,7 @@ public class JDBCRepoTest {
 
 
     @Test
-    @Disabled
+    //@Disabled
     void getGame() {
         Game g = new Game("p1","p2",3);
         int id = repo.createGame(g);

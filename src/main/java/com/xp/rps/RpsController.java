@@ -1,7 +1,10 @@
 package com.xp.rps;
 
+import com.xp.rps.data.Game;
+import com.xp.rps.data.GameResult;
+import com.xp.rps.data.Round;
+import com.xp.rps.data.RpsRepository;
 import com.xp.rps.rule.RPS;
-import com.xp.rps.rule.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,16 +35,20 @@ public class RpsController {
 
     @PostMapping("/play/{id}")
     Round play(@PathVariable int id, @RequestBody Round round) {
-        round.setResult(RPS.play(round.throw1, round.throw2));
+       // round.setResult(RPS.play(round.throw1, round.throw2));
+        round.setResult(RPS.play(round.getThrow1(), round.getThrow2()));
 
         //TODO: change to only insert the comming new Round
+        //12 factors
+        //MS Stateless state --> 1. Inmemory, 2. Filesystem
         //Store in GameResult
+        //fetch a gameResult with 2 rounds from DB
         GameResult gr = repo.getGameResult(id);
         if (gr==null) {
             Game game = repo.getGame(id);
             gr = new GameResult(game);
         }
-        gr.addRound(round);
+        gr.addRound(round); //by adding a new round, it is 3 rounds for this result
         repo.saveGameResult(gr);
 
         return round;
