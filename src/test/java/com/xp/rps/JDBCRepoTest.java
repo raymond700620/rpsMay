@@ -28,7 +28,7 @@ public class JDBCRepoTest {
 
 
     @Test
-    //@Disabled
+    @Disabled
     void getGame() {
         Game g = new Game("p1","p2",3);
         int id = repo.createGame(g);
